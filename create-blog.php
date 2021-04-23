@@ -1,3 +1,5 @@
+<?php require_once("/php/php-blog-website/php/create-blog-operation.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,24 +52,24 @@
         <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
         <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
         <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form action="" method="post" novalidate>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Name</label>
-              <input type="text" class="form-control" placeholder="Title" id="name" required data-validation-required-message="Please enter your name.">
+              <input name="title" type="text" class="form-control" placeholder="Title" id="title" required data-validation-required-message="Please enter your blog title.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Message</label>
-              <textarea rows="15" class="form-control" placeholder="Write your blog here" id="message" required data-validation-required-message="Please enter a message."></textarea>
+              <textarea name="content" rows="15" class="form-control" placeholder="Write your blog here" id="content" required data-validation-required-message="Please enter your blog contents."></textarea>
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <br>
           <div id="success"></div>
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+          <button name="create" type="submit" class="btn btn-primary" id="create-blog-button">Send</button>
         </form>
       </div>
     </div>
