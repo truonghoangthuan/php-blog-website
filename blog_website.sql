@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2021 at 12:07 PM
+-- Generation Time: Apr 25, 2021 at 04:52 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `blog` (
   `blog_id` int(10) NOT NULL,
+  `blog_date` date NOT NULL DEFAULT current_timestamp(),
   `blog_title` varchar(100) CHARACTER SET utf8 NOT NULL,
   `blog_content` varchar(2000) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
@@ -37,9 +38,9 @@ CREATE TABLE `blog` (
 -- Dumping data for table `blog`
 --
 
-INSERT INTO `blog` (`blog_id`, `blog_title`, `blog_content`) VALUES
-(1, 'test title', 'test content'),
-(2, 'test title 2', 'test content 2');
+INSERT INTO `blog` (`blog_id`, `blog_date`, `blog_title`, `blog_content`) VALUES
+(1, '2021-04-25', 'test title', 'test content'),
+(2, '2021-04-25', 'test title 2', 'test content 2');
 
 --
 -- Indexes for dumped tables
