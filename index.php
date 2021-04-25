@@ -1,4 +1,4 @@
-<?php require_once('/php/php-blog-website/php/show-blog.php') ?>
+<?php require_once('./php/show-blog.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
