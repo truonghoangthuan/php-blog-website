@@ -1,3 +1,5 @@
+<?php require_once('/php/php-blog-website/php/show-blog.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,15 +53,24 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title">
-              Man must explore, and this is exploration at its greatest
-            </h2>
-            <h3 class="post-subtitle">
-              Problems look mighty small from 150 miles up
-            </h3>
-          </a>
-          <p class="post-meta">Posted on September 24, 2019</p>
+          <?php
+          $result = getData();
+          while ($row = mysqli_fetch_array($result)) {
+          ?>
+            <a href="post.php">
+              <h2 class="post-title">
+                <?php echo $row['blog_title']?>
+              </h2>
+              <h3 class="post-subtitle">
+                <?php 
+                echo mb_substr($row['blog_content'], 0, 100, "UTF-8") . "..." ;
+                ?>
+              </h3>
+            </a>
+            <p class="post-meta">Posted on <?php echo $row['blog_date']?></p>
+          <?php
+          }
+          ?>
         </div>
         <hr>
         <!-- Pager -->
