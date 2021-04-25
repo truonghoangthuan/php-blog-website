@@ -1,5 +1,5 @@
 <?php
-require_once("/php/php-blog-website/php/db-connector.php");
+require_once("./php/db-connector.php");
 
 if (isset($_POST['create'])) {
     $title = textboxValue("title");
