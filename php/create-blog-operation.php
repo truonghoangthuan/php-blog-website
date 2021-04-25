@@ -5,18 +5,12 @@ if (isset($_POST['create'])) {
     $title = textboxValue("title");
     $content = textboxValue("content");
 
-    echo $title . " " . $content;
-
     if ($title && $content) {
         $sql = "insert into blog(blog_title, blog_content) values('$title','$content')";
 
-        if (mysqli_query($GLOBALS['conn'], $sql)) {
-            sendNotification("success", "Inserted record");
-        } else {
+        if (!mysqli_query($GLOBALS['conn'], $sql)) {
             sendNotification("error", "Please insert data");
         }
-    } else {
-        sendNotification("error", "Please insert data");
     }
 }
 
