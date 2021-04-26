@@ -1,5 +1,5 @@
 <?php
-require_once("/php/php-blog-website/php/db-connector.php");
+require_once("./php/db-connector.php");
 
 function getData()
 {

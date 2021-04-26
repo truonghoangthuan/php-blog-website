@@ -1,4 +1,4 @@
-<?php require_once("/php/php-blog-website/php/create-blog-operation.php"); ?>
+<?php require_once("./php/create-blog-operation.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,9 +49,6 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
-        <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
-        <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
         <form action="" method="post" novalidate>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
