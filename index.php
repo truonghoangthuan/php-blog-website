@@ -1,34 +1,16 @@
-<?php require_once('./php/show-blog.php') ?>
+<?php
+require_once('./php/show-blog.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Blog website</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-  <!-- Custom styles for this template -->
-  <link href="css/clean-blog.min.css" rel="stylesheet">
-
-</head>
+<?php include './templates/head.php'; ?>
 
 <body>
 
   <!-- Navigation -->
-  <?php include "./templates/nav.php"; ?>
+  <?php include './templates/nav.php'; ?>
 
   <!-- Page Header -->
   <header class="masthead" style="background-image: url('img/home-bg.jpg')">
@@ -55,20 +37,24 @@
         <div class="post-preview">
           <?php
           $result = getData();
-          while ($row = mysqli_fetch_array($result)) {
+          if ($result) {
+            while ($row = mysqli_fetch_array($result)) {
           ?>
-            <a href="post.php">
-              <h2 class="post-title">
-                <?php echo $row['blog_title']?>
-              </h2>
-              <h3 class="post-subtitle">
-                <?php 
-                echo mb_substr($row['blog_content'], 0, 100, "UTF-8") . "..." ;
-                ?>
-              </h3>
-            </a>
-            <p class="post-meta">Posted on <?php echo $row['blog_date']?></p>
-          <?php
+              <a href="detail.php?id=<?php echo $row['blog_id']; ?>">
+                <h2 class="post-title">
+                  <?php echo $row['blog_title'] ?>
+                </h2>
+                <h3 class="post-subtitle">
+                  <?php
+                  echo mb_substr($row['blog_content'], 0, 100, "UTF-8") . "...";
+                  ?>
+                </h3>
+              </a>
+              <p class="post-meta">Posted on <?php echo $row['blog_date'] ?></p>
+            <?php
+            }
+          } else {
+            echo "<h2 class='post-title'>Don't have any blogs here!</h2>";
           }
           ?>
         </div>
@@ -86,12 +72,26 @@
   <!-- Footer -->
   <?php include './templates/footer.php'; ?>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- JavaScript -->
+  <?php include './templates/scrips.php'; ?>
 
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+  <script>
+    function showHint(str) {
+      if (str.length == 0) {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("txtHint").innerHTML = this.responseText;
+          }
+        }
+        xmlhttp.open("GET", "gethint.php?q=" + str, true);
+        xmlhttp.send();
+      }
+    }
+  </script>
 
 </body>
 
