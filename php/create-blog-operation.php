@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $content = textboxValue("content");
     $cover = $_FILES["cover_img"]['name'];
 
-	$target = './php/upload-img/blog-img' . $cover;
+	$target = './php/upload-img/blog-img/' . $cover;
 
     if ($title && $content) {
         move_uploaded_file($_FILES["cover_img"]['tmp_name'], $target);

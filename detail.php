@@ -11,7 +11,14 @@
   <?php include './templates/nav.php'; ?>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+  <?php
+    $res = getDetail($_GET['id']);
+    while ($row3 = mysqli_fetch_array($res)) {
+      $url = "'php/upload-img/blog-img/" . $row3['blog_img'] . "'";
+      echo '<header class="masthead" style="background-image: url(' . $url . ')">';
+    }
+  ?>
+  <!-- <header class="masthead" style="background-image: url('img/post-bg.jpg')"> -->
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
